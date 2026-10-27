@@ -18,12 +18,22 @@ Al terminar: git commit -m "Resuelve ejercicio 05".
 """
 
 def calcular_subtotales(pedidos):
-    # TODO: implementa lo solicitado y devuelve el resultado.
-    pass
+    # A cada pedido (producto, precio, cantidad) le calculamos precio * cantidad
+    subtotales = list(map(lambda pedido: pedido[1] * pedido[2], pedidos))
+    return subtotales
 
 
-# Ejemplo de uso: inicialmente imprime None porque falta la implementación.
+# Ejemplo de uso del enunciado
 pedidos = [("cafe", 10, 2), ("te", 8, 3), ("torta", 25, 1)]
 print(calcular_subtotales(pedidos))
+# Esperado: [20, 24, 25]
 
-# TODO: añade otro ejemplo con print y su resultado esperado en un comentario.
+# Otro ejemplo
+pedidos2 = [("pan", 3, 4), ("leche", 20, 0), ("jugo", 12, 5)]
+print(calcular_subtotales(pedidos2))
+# Esperado: [12, 0, 60]
+# (leche tiene cantidad 0, así que su subtotal es 0)
+
+# Caso lista vacía
+print(calcular_subtotales([]))
+# Esperado: []
