@@ -23,18 +23,49 @@ Añade al menos otro ejemplo usando print y escribe en un comentario qué espera
 Al terminar: git commit -m "Resuelve ejercicio 04".
 """
 
+"""EJERCICIO 04 — Funciones como valores y argumentos
+(enunciado igual que el original)
+"""
+
 def aplicar_operacion(valores, operacion):
-    # TODO: implementa lo solicitado y devuelve el resultado.
-    pass
+    resultado = []
+
+    for valor in valores:
+        nuevo = operacion(valor)
+        resultado.append(nuevo)
+
+    return resultado
 
 
 def transformar(valores):
-    # TODO: crea el diccionario de funciones y aplica las operaciones.
-    pass
+    operaciones = {
+        "doble": lambda x: x * 2,
+        "cuadrado": lambda x: x * x,
+        "negativo": lambda x: -x,
+    }
+
+    resultado = {}
+
+    for nombre in operaciones:
+        funcion = operaciones[nombre]
+        resultado[nombre] = aplicar_operacion(valores, funcion)
+
+    return resultado
 
 
-# Ejemplo de uso: inicialmente imprime None porque falta la implementación.
 valores = [1, 2, 3]
 print(transformar(valores))
+# Esperado: {'doble': [2, 4, 6], 'cuadrado': [1, 4, 9], 'negativo': [-1, -2, -3]}
 
-# TODO: añade otro ejemplo con print y su resultado esperado en un comentario.
+# f)1
+print(aplicar_operacion([2, 4], lambda x: x + 1))
+# Esperado: [3, 5]
+
+# EjemX
+print(transformar([5, -2, 0]))
+# Esperado: {'doble': [10, -4, 0], 'cuadrado': [25, 4, 0], 'negativo': [-5, 2, 0]}
+# (el negativo de 0 es 0, y el negativo de -2 es 2)
+
+# Caso lista vacía
+print(transformar([]))
+# Esperado: {'doble': [], 'cuadrado': [], 'negativo': []}ado esperado en un comentario.
