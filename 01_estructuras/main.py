@@ -21,23 +21,16 @@ Añade al menos otro ejemplo usando print y escribe en un comentario qué espera
 Al terminar: git commit -m "Resuelve ejercicio 01".
 """
 
-"""EJERCICIO 01 — Resumen de ventas
-(enunciado igual que el original)
-"""
-
 def resumir_ventas(ventas):
     productos = set()
     unidades = 0
     por_producto = {}
 
     for producto, cantidad in ventas:
-        # Agregamos el nombre al set (si ya está, no se repite)
         productos.add(producto)
 
-        # Sumamos al total general
         unidades = unidades + cantidad
 
-        # Acumulamos la cantidad por producto
         if producto in por_producto:
             por_producto[producto] = por_producto[producto] + cantidad
         else:
