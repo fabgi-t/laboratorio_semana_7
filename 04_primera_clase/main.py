@@ -23,10 +23,6 @@ Añade al menos otro ejemplo usando print y escribe en un comentario qué espera
 Al terminar: git commit -m "Resuelve ejercicio 04".
 """
 
-"""EJERCICIO 04 — Funciones como valores y argumentos
-(enunciado igual que el original)
-"""
-
 def aplicar_operacion(valores, operacion):
     resultado = []
 
@@ -35,7 +31,6 @@ def aplicar_operacion(valores, operacion):
         resultado.append(nuevo)
 
     return resultado
-
 
 def transformar(valores):
     operaciones = {
