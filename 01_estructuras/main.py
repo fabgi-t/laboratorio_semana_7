@@ -21,13 +21,48 @@ Añade al menos otro ejemplo usando print y escribe en un comentario qué espera
 Al terminar: git commit -m "Resuelve ejercicio 01".
 """
 
+"""EJERCICIO 01 — Resumen de ventas
+(enunciado igual que el original)
+"""
+
 def resumir_ventas(ventas):
-    # TODO: implementa lo solicitado y devuelve el resultado.
-    pass
+    productos = set()
+    unidades = 0
+    por_producto = {}
+
+    for producto, cantidad in ventas:
+        # Agregamos el nombre al set (si ya está, no se repite)
+        productos.add(producto)
+
+        # Sumamos al total general
+        unidades = unidades + cantidad
+
+        # Acumulamos la cantidad por producto
+        if producto in por_producto:
+            por_producto[producto] = por_producto[producto] + cantidad
+        else:
+            por_producto[producto] = cantidad
+
+    resultado = {
+        "productos": productos,
+        "unidades": unidades,
+        "por_producto": por_producto,
+    }
+    return resultado
 
 
-# Ejemplo de uso: inicialmente imprime None porque falta la implementación.
+# Ejemplo de uso del enunciado
 ventas = [("cafe", 2), ("te", 1), ("cafe", 3)]
 print(resumir_ventas(ventas))
+# Esperado: {'productos': {'cafe', 'te'}, 'unidades': 6, 'por_producto': {'cafe': 5, 'te': 1}}
+# (el orden de los elementos del set puede cambiar)
 
-# TODO: añade otro ejemplo con print y su resultado esperado en un comentario.
+# Otro ejemplo
+ventas2 = [("pan", 4), ("leche", 2), ("pan", 1), ("huevos", 12), ("leche", 3)]
+print(resumir_ventas(ventas2))
+# Esperado: {'productos': {'pan', 'leche', 'huevos'}, 'unidades': 22,
+#            'por_producto': {'pan': 5, 'leche': 5, 'huevos': 12}}
+
+# Caso lista vacía
+print(resumir_ventas([]))
+# Esperado: {'productos': set(), 'unidades': 0, 'por_producto': {}}
